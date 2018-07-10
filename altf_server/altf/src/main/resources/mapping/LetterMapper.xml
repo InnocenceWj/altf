@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wj.altf.dao.LetterMapper">
+  <resultMap id="BaseResultMap" type="com.wj.altf.entity.Letter">
+    <result column="l_id" jdbcType="BIGINT" property="lId" />
+    <result column="u_id" jdbcType="BIGINT" property="uId" />
+    <result column="l_content" jdbcType="VARCHAR" property="lContent" />
+    <result column="l_last_time" jdbcType="INTEGER" property="lLastTime" />
+    <result column="l_img" jdbcType="VARCHAR" property="lImg" />
+    <result column="l_mp3" jdbcType="VARCHAR" property="lMp3" />
+    <result column="l_voice" jdbcType="VARCHAR" property="lVoice" />
+    <result column="l_video" jdbcType="VARCHAR" property="lVideo" />
+    <result column="l_receive_email" jdbcType="VARCHAR" property="lReceiveEmail" />
+    <result column="l_is_public" jdbcType="TINYINT" property="lIsPublic" />
+    <result column="l_create_time" jdbcType="TIMESTAMP" property="lCreateTime" />
+    <result column="l_is_valid" jdbcType="TINYINT" property="lIsValid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.wj.altf.entity.Letter">
+    insert into letter (l_id, u_id, l_content, 
+      l_last_time, l_img, l_mp3, 
+      l_voice, l_video, l_receive_email, 
+      l_is_public, l_create_time, l_is_valid
+      )
+    values (#{lId,jdbcType=BIGINT}, #{uId,jdbcType=BIGINT}, #{lContent,jdbcType=VARCHAR}, 
+      #{lLastTime,jdbcType=INTEGER}, #{lImg,jdbcType=VARCHAR}, #{lMp3,jdbcType=VARCHAR}, 
+      #{lVoice,jdbcType=VARCHAR}, #{lVideo,jdbcType=VARCHAR}, #{lReceiveEmail,jdbcType=VARCHAR}, 
+      #{lIsPublic,jdbcType=TINYINT}, #{lCreateTime,jdbcType=TIMESTAMP}, #{lIsValid,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wj.altf.entity.Letter">
+    insert into letter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lId != null">
+        l_id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="lContent != null">
+        l_content,
+      </if>
+      <if test="lLastTime != null">
+        l_last_time,
+      </if>
+      <if test="lImg != null">
+        l_img,
+      </if>
+      <if test="lMp3 != null">
+        l_mp3,
+      </if>
+      <if test="lVoice != null">
+        l_voice,
+      </if>
+      <if test="lVideo != null">
+        l_video,
+      </if>
+      <if test="lReceiveEmail != null">
+        l_receive_email,
+      </if>
+      <if test="lIsPublic != null">
+        l_is_public,
+      </if>
+      <if test="lCreateTime != null">
+        l_create_time,
+      </if>
+      <if test="lIsValid != null">
+        l_is_valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lId != null">
+        #{lId,jdbcType=BIGINT},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=BIGINT},
+      </if>
+      <if test="lContent != null">
+        #{lContent,jdbcType=VARCHAR},
+      </if>
+      <if test="lLastTime != null">
+        #{lLastTime,jdbcType=INTEGER},
+      </if>
+      <if test="lImg != null">
+        #{lImg,jdbcType=VARCHAR},
+      </if>
+      <if test="lMp3 != null">
+        #{lMp3,jdbcType=VARCHAR},
+      </if>
+      <if test="lVoice != null">
+        #{lVoice,jdbcType=VARCHAR},
+      </if>
+      <if test="lVideo != null">
+        #{lVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="lReceiveEmail != null">
+        #{lReceiveEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="lIsPublic != null">
+        #{lIsPublic,jdbcType=TINYINT},
+      </if>
+      <if test="lCreateTime != null">
+        #{lCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lIsValid != null">
+        #{lIsValid,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

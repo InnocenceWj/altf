@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wj.altf.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.wj.altf.entity.User">
+    <result column="u_id" jdbcType="BIGINT" property="uId" />
+    <result column="u_name" jdbcType="VARCHAR" property="uName" />
+    <result column="u_pwd" jdbcType="VARCHAR" property="uPwd" />
+    <result column="u_register_time" jdbcType="TIMESTAMP" property="uRegisterTime" />
+    <result column="u_is_valid" jdbcType="TINYINT" property="uIsValid" />
+    <result column="u_icon_url" jdbcType="VARCHAR" property="uIconUrl" />
+  </resultMap>
+  <insert id="insert" parameterType="com.wj.altf.entity.User">
+    insert into user (u_id, u_name, u_pwd, 
+      u_register_time, u_is_valid, u_icon_url
+      )
+    values (#{uId,jdbcType=BIGINT}, #{uName,jdbcType=VARCHAR}, #{uPwd,jdbcType=VARCHAR}, 
+      #{uRegisterTime,jdbcType=TIMESTAMP}, #{uIsValid,jdbcType=TINYINT}, #{uIconUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wj.altf.entity.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="uName != null">
+        u_name,
+      </if>
+      <if test="uPwd != null">
+        u_pwd,
+      </if>
+      <if test="uRegisterTime != null">
+        u_register_time,
+      </if>
+      <if test="uIsValid != null">
+        u_is_valid,
+      </if>
+      <if test="uIconUrl != null">
+        u_icon_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        #{uId,jdbcType=BIGINT},
+      </if>
+      <if test="uName != null">
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPwd != null">
+        #{uPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uRegisterTime != null">
+        #{uRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uIsValid != null">
+        #{uIsValid,jdbcType=TINYINT},
+      </if>
+      <if test="uIconUrl != null">
+        #{uIconUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
